@@ -1,15 +1,16 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: :create
 
-    def show
-        user = User.find_by(id: params[:id])
-        render json: user
-    end
-
-    def create
-        user = User.create(user_params)
+    def create #signup
+        user = User.create!(user_params)
         session[:user_id] = user.id
-        render json:user
+        render json: user, status: :created 
     end 
+    
+    def show
+        render json: @current_user, status: :accepted 
+    end
+      
 
     # def destroy
     #     user = User.find_by(id: params[:id])
@@ -19,6 +20,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :profile_picture, :bio)
     end 
 end

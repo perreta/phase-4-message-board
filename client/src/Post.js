@@ -4,7 +4,7 @@ function Post ({ id, content, username, avatar, postArray, setPostArray }) {
 
     function handleRemove(e) {
         console.log(e.target)
-        fetch(`http://localhost:3000/posts/${id}`, {
+        fetch(`/posts/${id}`, {
             method: 'DELETE',
         })
         .then(res => res.json())

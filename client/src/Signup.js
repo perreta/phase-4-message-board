@@ -1,48 +1,48 @@
 import { useState } from "react";
 import { Form, Input, TextArea, Button } from "semantic-ui-react";
 
-function Signup() {
-    const [user, setUser] = useState('')
-    const [errors, setErrors] = useState('')
-    const [userInput, setUserInput] = useState({
+function Signup({ onLogin }) {
+  const [errors, setErrors] = useState([]);
+
+  const [userInput, setUserInput] = useState({
     username: "",
     password: "",
-    image_url: "",
+    profile_picture: "",
     bio: "",
   });
 
-  function inputOnChange(e){
+  function inputOnChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(`${e.target.name}:${e.target.value}`)
     setUserInput({
-        ...userInput, //spreading the userInput
-        [name]: value, //inserting the name and value the user typed in
+      ...userInput, //spreading the userInput
+      [name]: value, //inserting the name and value the user typed in
     });
     // e.target.reset();
   }
 
-  function handleSubmit(e){
-     e.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     //  console.log("I was clicked")
-    fetch('/signup', { 
-        method: 'POST',
-        headers: {contentType: 'application/json'},
-        body: JSON.stringify(userInput)
+    fetch(`/signup`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInput),
     })
-    .then(res => res.json())
-    .then(data => {
-        if(data.error){
-            setErrors(data)
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((user) => onLogin(user));
         } else {
-            setUser([...user, userInput])
+          r.json().then((err) => setErrors(err.errors));
         }
-    })
-
+      });
   }
   return (
     <>
       <h1>Signup Page</h1>
+      {errors.map(error => <h2>{error}</h2>)}
       <Form onSubmit={handleSubmit}>
         <Form.Group widths="equal">
           <Form.Field
@@ -51,7 +51,8 @@ function Signup() {
             label="Username"
             name="username"
             placeholder="Username"
-            onChange={inputOnChange} 
+            autoComplete="off"
+            onChange={inputOnChange}
           />
           <Form.Field
             id="form-input-control-password"
@@ -59,15 +60,17 @@ function Signup() {
             label="Password"
             name="password"
             placeholder="Password"
-            onChange={inputOnChange} 
+            type="password"
+            autoComplete="off"
+            onChange={inputOnChange}
           />
           <Form.Field
             id="form-input-control-image"
             control={Input}
             label="Image URL"
-            name="image_url"
+            name="profile_picture"
             placeholder="Image URL"
-            onChange={inputOnChange} 
+            onChange={inputOnChange}
           />
         </Form.Group>
 
@@ -77,7 +80,7 @@ function Signup() {
           label="Bio"
           name="bio"
           placeholder="Bio"
-          onChange={inputOnChange} 
+          onChange={inputOnChange}
         />
         <Button type="submit">Submit</Button>
       </Form>

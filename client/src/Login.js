@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Form, Input, Button } from "semantic-ui-react";
 
-function Login() {
-  const [errors, setErrors] = useState("");
-
+function Login({onLogin}) {
+  const [errors, setErrors] = useState([]);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -12,7 +11,7 @@ function Login() {
   function loginOnChange(e) {
     const name = e.target.name;
     const value = e.target.value;
-    console.log(`${e.target.name}:${e.target.value}`);
+    // console.log(`${e.target.name}:${e.target.value}`);
     setUser({
       ...user, //spreading the userInput
       [name]: value,
@@ -20,19 +19,20 @@ function Login() {
   }
   const loginSubmit = (e) => {
     e.preventDefault();
-    console.log("login click")
+    // console.log("login click")
 
     fetch("/login", {
       method: "POST",
-      headers: { contentType: "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.error) {
-          setErrors(data);
+        console.log(data)
+        if (data.errors) {
+          setErrors(data.errors);
         } else {
-          setUser(user);
+          onLogin(data);
         }
       });
   };
@@ -48,17 +48,20 @@ function Login() {
             label="Username"
             placeholder="Username"
             name="username"
+            autoComplete="off"
             onChange={loginOnChange}
           />
           <Form.Field
             id="form-input-control-password"
             control={Input}
+            type="password"
             label="Password"
             placeholder="Password"
             name="password"
             onChange={loginOnChange}
           />
         </Form.Group>
+        {errors.map(error => <div>{error}</div>)}
         <Button>Login</Button>
       </Form>
     </>
