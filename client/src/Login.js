@@ -40,7 +40,6 @@ function Login({onLogin}) {
   return (
     <div >
       <Form onSubmit={loginSubmit} float="right">
-        <hr/>
       <Header as="h2">Login Page</Header>
         <Form.Group widths="equal">
           <Form.Field

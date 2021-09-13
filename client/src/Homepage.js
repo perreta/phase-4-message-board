@@ -3,7 +3,6 @@ import NavBar from './NavBar'
 function Homepage() {
     return (
       <>
-        <NavBar/>
     
       </>
     );

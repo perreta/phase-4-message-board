@@ -37,8 +37,9 @@ function App() {
 
   return (
     <>
+      <TitleHeader/>
       <Homepage/>
-      <NavBar user={user} setUser={setUser} />
+      <NavBar user={user}/>
       <Main/>
     </>
   );

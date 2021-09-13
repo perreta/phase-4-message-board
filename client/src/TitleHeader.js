@@ -16,6 +16,7 @@ function TitleHeader() {
           Messaging Board
           </Header.Content>
       </Header>
+      <hr/>
 
       </div>
   
