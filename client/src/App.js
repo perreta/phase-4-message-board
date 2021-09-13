@@ -1,4 +1,4 @@
-import Header from './Header'
+import TitleHeader from './TitleHeader'
 import Main from './Main'
 import Login from './Login'
 import Homepage from './Homepage'
@@ -8,9 +8,9 @@ import React, { useEffect, useState } from "react";
 // import { Switch, Route } from "react-router-dom";
 
 // COMMANDS THAT WE NEED TO RUN
-//npm install --prefix client 
-//npm install semantic-ui-react semantic-ui-css
-//npm start --prefix client
+// npm install --prefix client 
+// npm install semantic-ui-react semantic-ui-css
+// npm start --prefix client
 
 
 
@@ -28,17 +28,17 @@ function App() {
   }, []);
 
   if (!user) return (
-  <>
+  <div >
+    <TitleHeader/>
     <Login onLogin={setUser} />
     <Signup onLogin={setUser} />
-  </>
+  </div>
   );
 
   return (
     <>
-      <Header/>
-      <NavBar user={user} setUser={setUser} />
       <Homepage/>
+      <NavBar user={user} setUser={setUser} />
       <Main/>
     </>
   );
