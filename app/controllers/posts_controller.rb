@@ -1,11 +1,10 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :update, :destroy]
-  # skip_before_action  :authorize, only: [:show, :update, :destroy]
+  skip_before_action :authorize, only: :index
 
   # GET /posts
   def index
     posts = Post.all
-
     render json: posts
   end
 
