@@ -58,7 +58,7 @@ function TitleHeader({ user }) {
           <p style={{ fontSize: "16px" }}>
             Keeping up with friends is faster and easier than ever. Share
             updates, engage with friends, and stay connected to communities
-            important to you. Enjoy our minimalist, plainer than a plain bagel
+            important to you. Enjoy our minimalistic, plainer-than-a-plain-bagel
             design.🥯
           </p>
 
