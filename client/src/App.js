@@ -1,9 +1,6 @@
-import TitleHeader from "./TitleHeader";
-import Main from "./Main";
 
-import Homepage from "./Homepage";
+import Main from "./Main"
 import NavBar from "./NavBar";
-import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
 
 import Login from "./Login";
@@ -15,24 +12,10 @@ import Signup from "./Signup";
 // npm start --prefix client
 // npm install react-router-dom
 
-function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    // auto-login
-    fetch("/me").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
+function App({user, setUser}) {
   if (!user)
     return (
       <div>
-        <Route path="/">
-          <TitleHeader user={user} />
-        </Route>
         <Switch>
           <Route exact path="/login">
             <Login onLogin={setUser} />
@@ -47,8 +30,6 @@ function App() {
 
   return (
     <>
-      <TitleHeader user={user}/>
-      <Homepage />
       <NavBar user={user} setUser={setUser} />
       <Main user={user}/>
     </>

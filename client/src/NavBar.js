@@ -47,7 +47,7 @@ function NavBar({ user, setUser }) {
 
         {user ? (
           <Menu.Item>
-            <Menu.Header onClick={handleLogout}   style={{ color: "grey" }}>
+            <Menu.Header onClick={handleLogout}   style={{ color: "grey", cursor: "pointer"}}>
                Logout
             </Menu.Header>
           </Menu.Item>
