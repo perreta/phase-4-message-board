@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Input, TextArea, Button } from "semantic-ui-react";
+import { Form, Input, TextArea, Button, Header } from "semantic-ui-react";
 
 function Signup({ onLogin }) {
   const [errors, setErrors] = useState([]);
@@ -40,12 +40,13 @@ function Signup({ onLogin }) {
       });
   }
   return (
-    <>
-      <h1>Signup Page</h1>
+    <div style={{paddingRight:"300px", paddingLeft:"300px", paddingTop:"100px", paddingBottom:"100px"}}>
+       <Header as="h2">Sign Up Page</Header>
       {errors.map(error => <h2>{error}</h2>)}
       <Form onSubmit={handleSubmit}>
-        <Form.Group widths="equal">
+        <Form.Group  widths='equal' >
           <Form.Field
+            fluid
             id="form-input-control-username"
             control={Input}
             label="Username"
@@ -55,6 +56,7 @@ function Signup({ onLogin }) {
             onChange={inputOnChange}
           />
           <Form.Field
+            fluid
             id="form-input-control-password"
             control={Input}
             label="Password"
@@ -65,6 +67,7 @@ function Signup({ onLogin }) {
             onChange={inputOnChange}
           />
           <Form.Field
+            fluid
             id="form-input-control-image"
             control={Input}
             label="Image URL"
@@ -75,6 +78,7 @@ function Signup({ onLogin }) {
         </Form.Group>
 
         <Form.Field
+          fluid
           id="form-input-control-bio"
           control={TextArea}
           label="Bio"
@@ -84,7 +88,7 @@ function Signup({ onLogin }) {
         />
         <Button type="submit">Submit</Button>
       </Form>
-    </>
+    </div>
   );
 }
 

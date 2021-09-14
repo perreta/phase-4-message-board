@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, Input, Button, Header, Divider } from "semantic-ui-react";
+import { Form, Input, Button, Header } from "semantic-ui-react";
 
 function Login({onLogin}) {
   const [errors, setErrors] = useState([]);
@@ -38,11 +38,11 @@ function Login({onLogin}) {
   };
 
   return (
-    <div >
+    <div style={{paddingRight:"300px", paddingLeft:"300px", paddingTop:"100px", paddingBottom:"100px"}}>
       <Form onSubmit={loginSubmit} float="right">
       <Header as="h2">Login Page</Header>
-        <Form.Group widths="equal">
-          <Form.Field
+     
+          <Form.Field 
             id="form-input-control-username"
             control={Input}
             label="Username"
@@ -51,6 +51,7 @@ function Login({onLogin}) {
             autoComplete="off"
             onChange={loginOnChange}
           />
+     
 
           <Form.Field
             id="form-input-control-password"
@@ -61,7 +62,7 @@ function Login({onLogin}) {
             name="password"
             onChange={loginOnChange}
           />
-        </Form.Group>
+
         {errors.map(error => <div>{error}</div>)}
         <Button>Login</Button>
       </Form>
