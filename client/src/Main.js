@@ -2,10 +2,10 @@ import PostContainer from './PostContainer'
 import Profile from './Profile'
 
 
-function Main() {
+function Main({user}) {
     return (
       <div style={{textAlign:"center", paddingRight:"200px",  paddingLeft:"200px", paddingBottom:"200px" }}>
-        <h1>hello from main!</h1>
+        <h1>{user.username}'s Messaging Board </h1>
         <PostContainer/>
         <Profile/>
       </div>

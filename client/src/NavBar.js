@@ -23,14 +23,6 @@ function NavBar({ user, setUser }) {
   return (
     <>
       <Menu style={{marginTop:"0px"}}>
-        {user ? (
-          <Menu.Item>
-            <Menu.Header onClick={handleLogout}>
-               Logout
-            </Menu.Header>
-          </Menu.Item>
-        ) : null}
-
         <Menu.Item>
           <NavLink
             strict
@@ -52,6 +44,15 @@ function NavBar({ user, setUser }) {
            Posts
           </NavLink>
         </Menu.Item>
+
+        {user ? (
+          <Menu.Item>
+            <Menu.Header onClick={handleLogout}>
+               Logout
+            </Menu.Header>
+          </Menu.Item>
+        ) : null}
+
       </Menu>
     </>
   );

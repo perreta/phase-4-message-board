@@ -50,7 +50,7 @@ function App() {
       <TitleHeader user={user}/>
       <Homepage />
       <NavBar user={user} setUser={setUser} />
-      <Main />
+      <Main user={user}/>
     </>
   );
 }
