@@ -6,7 +6,7 @@ import typingLogo from "./photos/WavyViciousIrishdraughthorse-size_restricted.gi
 
 function TitleHeader({ user }) {
   return (
-    <div style={{ textAlign: "center", padding:"20px"}}>
+    <div style={{ textAlign: "center", padding: "20px" }}>
       <Header as="h1">
         <Header.Content>
           <Image
@@ -26,22 +26,23 @@ function TitleHeader({ user }) {
             style={{
               float: "right",
               height: "50px",
-              width: "50px"
+              width: "50px",
             }}
           />
-        ) :    <Divider />}
+        ) : (
+          <Divider />
+        )}
       </Header>
 
       {user ? null : (
         <div
           style={{
             textAlign: "left",
-            paddingRight: "350px",
-            paddingLeft: "350px",
+            paddingRight: "300px",
+            paddingLeft: "300px",
             paddingTop: "50px",
           }}
         >
-       
           <Header as="h2" style={{ fontWeight: "lighter" }}>
             Welcome to Message Board{" "}
           </Header>
@@ -54,18 +55,17 @@ function TitleHeader({ user }) {
               paddingRight: "30px",
             }}
           />
-          <p style={{ fontSize: "18px" }}>
+          <p style={{ fontSize: "16px" }}>
             Keeping up with friends is faster and easier than ever. Share
             updates, engage with friends, and stay connected to communities
-            important to you.
+            important to you. Enjoy our minimalist, plainer than a plain bagel
+            design.
           </p>
 
-          <Link to="/login" style={{ fontSize: "20px" }}>
-            Login &ensp;
-          </Link>
-          <Link to="/signup" style={{ fontSize: "20px" }}>
-            &ensp;Singup
-          </Link>
+          <div style={{ textAlign: "center", fontSize: "16px" }}>
+            <Link to="/login">Login &ensp;</Link>
+            <Link to="/signup">&ensp;Singup</Link>
+          </div>
         </div>
       )}
     </div>

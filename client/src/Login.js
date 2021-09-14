@@ -40,7 +40,7 @@ function Login({onLogin}) {
   return (
     <div style={{paddingRight:"300px", paddingLeft:"300px", paddingTop:"100px", paddingBottom:"100px"}}>
       <Form onSubmit={loginSubmit} float="right">
-      <Header as="h2">Login Page</Header>
+      <Header as="h2">Login</Header>
      
           <Form.Field 
             id="form-input-control-username"

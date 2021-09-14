@@ -41,9 +41,9 @@ function Signup({ onLogin }) {
   }
   return (
     <div style={{paddingRight:"300px", paddingLeft:"300px", paddingTop:"100px", paddingBottom:"100px"}}>
-       <Header as="h2">Sign Up Page</Header>
+       <Header as="h2">Sign Up</Header>
       {errors.map(error => <h2>{error}</h2>)}
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit} >
         <Form.Group  widths='equal' >
           <Form.Field
             fluid
