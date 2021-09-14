@@ -6,8 +6,7 @@ class UsersController < ApplicationController
         render json: users
     end
     def show
-        user = User.find_by(id: params[:id])
-        render json: user
+        render json: @current_user, status: :accepted 
     end
 
     def create
