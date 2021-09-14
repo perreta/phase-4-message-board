@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :posts
+  resources :posts, :users
   #USERS
   # resources :users, only: [:destroy]
   post "/signup", to: "users#create"
-  get "/me", to: "users#Show"
+  get "/me", to: "users#show"
 
   #SESSIONS
   post "/login", to: "sessions#create"

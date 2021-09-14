@@ -6,20 +6,19 @@ function PostContainer () {
     
     const [ postArray, setPostArray ] = useState([])
     useEffect(() => {
-        fetch("http://localhost:3000/posts")
+        fetch("/posts")
             .then(resp=>resp.json())
             .then(data=>setPostArray(data))
     }, [])
-    
     const post = postArray.map(post => {
-        return <Post key={post.id} id={post.id} content={post.text} username={post.username} avatar={post.image_url} postArray={postArray} setPostArray={setPostArray} />
+        console.log(post.date)
+        return <Post key={post.id} id={post.id} content={post.text} username={post.user.username} avatar={post.user.profile_picture} date={post.date} postArray={postArray} setPostArray={setPostArray} />
     })
 
     
     return (
         <>
            {/* <PostForm setPostArray={setPostArray}/> */}
-           <p>hello post</p>
            <div className="posts">
                 {post}
            </div>
