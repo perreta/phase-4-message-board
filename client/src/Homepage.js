@@ -5,11 +5,7 @@ import Login from "./Login";
 import Signup from "./Signup";
 import { Switch, Route } from "react-router-dom";
 
-// COMMANDS THAT WE NEED TO RUN
-// npm install --prefix client
-// npm install semantic-ui-react semantic-ui-css
-// npm start --prefix client
-// npm install react-router-dom
+
 
 function Homepage({user, setUser}) {
   if (!user)

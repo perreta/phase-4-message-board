@@ -1,9 +1,15 @@
 import TitleHeader from "./TitleHeader";
-import {useState, useEffect} from "react";
 import Homepage from "./Homepage";
+import { useState, useEffect } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+
+  // COMMANDS THAT WE NEED TO RUN
+  // npm install --prefix client
+  // npm install semantic-ui-react semantic-ui-css
+  // npm start --prefix client
+  // npm install react-router-dom
 
   useEffect(() => {
     // auto-login
