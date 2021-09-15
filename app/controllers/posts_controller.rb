@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    post = Post.create!(post_params)
+    post = @current_user.posts.create!(post_params)
     render json: post, status: :created
   end
 
@@ -40,14 +40,13 @@ class PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def find_post
-      post = Post.find(params[:id])
+      post = @current_user.posts.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:text, :user_id)
+      params.permit(:text)
     end
 
     def render_not_found_response(exception) 
