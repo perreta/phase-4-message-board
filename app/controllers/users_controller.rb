@@ -5,6 +5,10 @@ class UsersController < ApplicationController
         users = User.all
         render json: users
     end
+    
+    def show
+        render json: @current_user, status: :accepted
+    end
 
     def create
         user = User.create(user_params)
@@ -12,9 +16,6 @@ class UsersController < ApplicationController
         render json: user, status: :created 
     end 
     
-    def show
-        render json: @current_user, status: :accepted 
-    end
       
 
     # def destroy

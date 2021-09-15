@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   # GET /posts
   def index
     posts = Post.all
-    render json: posts, status: :ok
+    render json: posts, include: :user, status: :ok
   end
 
   # GET /posts/1

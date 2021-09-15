@@ -3,6 +3,7 @@ class ApplicationController < ActionController::API
   before_action :authorize
 
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
 
 
@@ -13,6 +14,10 @@ class ApplicationController < ActionController::API
     render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user
   end
    
+  def record_not_found
+    render json: { error: "Not Found" }, status: :not_found
+  end 
+
 
   def render_unprocessable_entity_response(invalid)
     render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
