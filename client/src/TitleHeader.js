@@ -52,7 +52,8 @@ function TitleHeader({ user }) {
               float: "left",
               height: "100px",
               width: "200px",
-              paddingRight: "30px",
+              margin: "20px",
+              
             }}
           />
           <p style={{ fontSize: "16px" }}>
