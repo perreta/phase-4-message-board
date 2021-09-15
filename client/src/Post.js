@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './Hidden.css'
 
-function Post ({ id, content, username, avatar, date, updatedDate, postArray, setPostArray }) {   
+function Post ({ id, content, username, avatar, date, updatedDate, createdAt, updatedAt, postArray, setPostArray }) {   
     const [isClicked, setIsClicked] = useState(false)
     const [updatedText, setUpdatedText] = useState("")
 
@@ -11,7 +11,6 @@ function Post ({ id, content, username, avatar, date, updatedDate, postArray, se
         })
         .then(res => res.json())
         const postsToDisplay = postArray.filter((post) => {
-            console.log(post.id, id)
             if (post.id === id) return false
             else return true
         })
@@ -41,7 +40,7 @@ function Post ({ id, content, username, avatar, date, updatedDate, postArray, se
         setPostArray(updatedPostsArray);
     }
     
-    function handleEditClick(e){
+    function handleEditClick(){
         setIsClicked(prevIsClicked => !prevIsClicked)
     }
     
@@ -54,7 +53,7 @@ function Post ({ id, content, username, avatar, date, updatedDate, postArray, se
             <div className="post" style={{ padding: 5, border: "2px solid gray" }}>
                 <img src={avatar} alt="user avatar" style={{maxWidth: 250}}/>
                 <h1>{username}</h1>
-                {updatedDate === date ? <h3>{date}</h3> : <h3>Updated: {updatedDate}</h3>}
+                {createdAt === updatedAt ? <h3>{date}</h3> : <h3>Updated: {updatedDate}</h3>}
                 {!isClicked ? 
                 <p>{content}</p> : 
                 <form id="post-update" onSubmit={handleEdit}>

@@ -9,4 +9,5 @@ class PostSerializer < ActiveModel::Serializer
   def updated_date
     object.updated_at.strftime("%b %e,  %l:%M %p")
   end
+
 end

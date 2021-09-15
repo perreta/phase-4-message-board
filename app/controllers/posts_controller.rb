@@ -9,7 +9,7 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    posts = Post.all
+    posts = Post.all.sort_by(&:created_at).reverse 
     render json: posts, include: :user, status: :ok
   end
 
