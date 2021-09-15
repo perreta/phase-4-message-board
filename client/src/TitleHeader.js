@@ -1,7 +1,6 @@
 import { Header, Image, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import logo from "./photos/icons8-typewriter-with-paper-50.png";
-import profileLogo from "./photos/icons8-name-64.png";
 import typingLogo from "./photos/WavyViciousIrishdraughthorse-size_restricted.gif";
 
 function TitleHeader({ user }) {
@@ -31,7 +30,7 @@ function TitleHeader({ user }) {
           {/* </Header.Content> */}
         {user ? (
           <Image
-            src={profileLogo}
+            src={user.profile_picture}
             style={{
               float: "right",
               height: "50px",

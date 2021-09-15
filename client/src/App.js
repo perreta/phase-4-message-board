@@ -11,7 +11,7 @@ import Homepage from "./Homepage";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [toggle, setToggle] = useState(false);
+
 
   // COMMANDS THAT WE NEED TO RUN
   // npm install --prefix client
@@ -30,8 +30,8 @@ function App() {
 
   return (
     <>
-      <TitleHeader user={user} setToggle={setToggle}/>
-      <Homepage user={user} setUser={setUser} toggle={toggle} />
+      <TitleHeader user={user} />
+      <Homepage user={user} setUser={setUser} />
     </>
   );
 }

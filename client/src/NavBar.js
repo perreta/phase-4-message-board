@@ -23,6 +23,7 @@ function NavBar({ user, setUser }) {
   return (
     <>
       <Menu style={{marginTop:"0px"}}>
+
         <Menu.Item>
           <NavLink
             strict
@@ -30,18 +31,18 @@ function NavBar({ user, setUser }) {
             style={{ color: "grey" }}
             activeStyle={{ fontWeight: "bold", color: "black" }}
           >
-            Home
+           Posts
           </NavLink>
         </Menu.Item>
 
         <Menu.Item>
           <NavLink
             strict
-            to="/posts"
+            to="/profile-edit"
             style={{ color: "grey" }}
             activeStyle={{ fontWeight: "bold", color: "black" }}
           >
-           Posts
+           Profile
           </NavLink>
         </Menu.Item>
 

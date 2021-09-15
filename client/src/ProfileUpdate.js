@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useHistory } from "react-router-dom";
 
 function ProfileUpdate({user, setUser}){
+    const [errors, setErrors] = useState([]);
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [profilePicture, setProfilePicture] = useState('')
     const [bio, setBio] = useState('')
     const history = useHistory();
-    console.log(user.id)
 
     function onSubmit(e){
         e.preventDefault()
@@ -26,14 +26,16 @@ function ProfileUpdate({user, setUser}){
                 })
         })
         .then((r) => r.json())
-        .then((user) => setUser(user));
+        .then((user) => {
+        if (user.errors) {
+            setErrors(user.errors)
+        } else {
+        setUser(user)
         history.push("/profile-edit");
+        }
+        })
     }
 
-    console.log(username)
-    console.log(password)
-    console.log(profilePicture)
-    console.log(bio)
 
     return(
         <div className="App">
@@ -59,9 +61,11 @@ function ProfileUpdate({user, setUser}){
                 </label>
                 <br />
                 <input type="submit" value="Update" />
+                {errors.map(error => <div>{error}</div>)}
             </form>
+
         </div>
-    );
+    )
 }
 
 export default ProfileUpdate;
