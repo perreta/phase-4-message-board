@@ -2,6 +2,7 @@ import { Header, Image, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import logo from "./photos/icons8-typewriter-with-paper-50.png";
 import typingLogo from "./photos/WavyViciousIrishdraughthorse-size_restricted.gif";
+import defaultProfile from "./photos/icons8-name-64.png"
 
 function TitleHeader({ user }) {
   return (
@@ -19,18 +20,9 @@ function TitleHeader({ user }) {
           />
         </Header.Content>
 
-          {/* <Link to='/profile-edit'>
-            <Image 
-            src={profileLogo}
-            style={{float:"right", height:"50px", width:"50px"}}
-            onClick={handleClick}
-            />
-          </Link> */}
-          
-          {/* </Header.Content> */}
         {user ? (
           <Image
-            src={user.profile_picture}
+            src={user.profile_picture? user.profile_picture :defaultProfile }
             style={{
               float: "right",
               height: "50px",

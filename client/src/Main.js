@@ -12,10 +12,10 @@ function Main({ user, setUser }) {
         paddingBottom: "200px",
       }}
     >
-      <h1>{user.username}'s Messaging Board </h1>
 
       <Switch>
         <Route exact path="/">
+      <h1>{user.username}'s Messaging Board </h1>
           <PostContainer user={user} />
         </Route>
 

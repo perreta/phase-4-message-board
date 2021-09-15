@@ -1,6 +1,13 @@
 import { useState } from "react";
 import "./Hidden.css";
-import { Button, Form } from "semantic-ui-react";
+import {
+  Form,
+  Input,
+  Button,
+  TextArea,
+  Header,
+  Image,
+} from "semantic-ui-react";
 
 function Post({
   user,
@@ -11,7 +18,7 @@ function Post({
   date,
   updatedDate,
   postArray,
-  setPostArray,
+  setPostArray
 }) {
   const [isClicked, setIsClicked] = useState(false);
   const [updatedText, setUpdatedText] = useState("");
@@ -44,6 +51,7 @@ function Post({
     setIsClicked(!isClicked);
   }
 
+  
   function handleUpdatePost(updatedPost) {
     const updatedPostsArray = postArray.map((post) => {
       return post.id === updatedPost.id ? updatedPost : post;
@@ -61,24 +69,42 @@ function Post({
 
   return (
     <>
-      <div className="post" style={{ padding: 5, border: "2px solid gray" }}>
-        <img src={avatar} alt="user avatar" style={{ maxWidth: 250 }} />
-        <h1>{username}</h1>
+      <div
+        className="post"
+        style={{
+          justifyContent: "center",
+          padding: 5,
+          border: "2px solid gray",
+        }}
+      >
+        <Image
+          src={avatar}
+          alt="user avatar"
+          style={{ maxWidth: 250,   marginLeft:"auto",
+            marginRight:"auto" }}
+        />
+        <Header as="h3" style={{fontWeight:"lighter"}}>Username: {username}</Header>
         {updatedDate === date ? (
-          <h3>{date}</h3>
+          <Header style={{fontWeight:"lighter", fontSize: "12px" }}>Posted: {date}</Header>
         ) : (
-          <h3>Updated: {updatedDate}</h3>
+          <Header style={{fontWeight:"lighter", fontSize: "12px" }}>Updated: {updatedDate}</Header>
         )}
         {!isClicked ? (
-          <p>{content}</p>
+          <p style={{fontWeight:"lighter", fontSize: "20px", marginLeft:"auto", marginRight:"auto",marginBottom:"0px",paddingLeft:"100px", paddingRight:"100px" }}>{content}</p>
         ) : (
-          <Form id="post-update" onSubmit={handleEdit}>
-            <label className="label1">
-              Update Post:
-              <br />
-              <input onChange={handleInputChange} type="text" name="input" />
-            </label>
-            <input className="submit-button" type="submit" value="Update" />
+          <Form onSubmit={handleEdit} style={{textAlign: "left", marginTop:"20px", marginLeft:"auto",
+          marginRight:"auto", paddingLeft:"150px",
+          paddingRight:"150px" }}>
+            <Form.Field
+            label="Update Post:"
+            style={{fontWeight:"lighter", fontSize: "20px"}}
+            onChange={handleInputChange} 
+            type="text" 
+            control={TextArea}
+            value={updatedText}
+      
+            />
+             <Button>Update</Button>
           </Form>
         )}
         {user.username === username ? (
