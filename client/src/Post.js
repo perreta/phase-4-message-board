@@ -14,7 +14,7 @@ function Post ({ id, content, username, avatar, date, postArray, setPostArray })
         setPostArray(postsToDisplay)
     }
 
-    console.log(date)
+    // console.log(date)
 
    
     

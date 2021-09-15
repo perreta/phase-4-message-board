@@ -1,11 +1,10 @@
 import TitleHeader from './TitleHeader'
 import Main from './Main'
 import Login from './Login'
-import Homepage from './Homepage'
 import Signup from './Signup';
-import NavBar from './NavBar';
+import Profile from './Profile'
 import React, { useEffect, useState } from "react";
-// import { Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 // COMMANDS THAT WE NEED TO RUN
 // npm install --prefix client 
@@ -17,6 +16,7 @@ import React, { useEffect, useState } from "react";
 function App() {
 
   const [user, setUser] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
     // auto-login
@@ -35,12 +35,12 @@ function App() {
   </div>
   );
 
+  
+  // console.log(user);
   return (
     <>
-      <TitleHeader/>
-      <Homepage/>
-      <NavBar user={user}/>
-      <Main/>
+      <TitleHeader setToggle={setToggle} toggle={toggle} />
+      {toggle ? <Profile user={user} setUser={setUser} /> : <Main user={user} /> }
     </>
   );
 }

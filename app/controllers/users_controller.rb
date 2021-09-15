@@ -1,13 +1,10 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: :index
+    skip_before_action :authorize, only: :index
+    # before_action :set_post, only: [:update]
 
     def index
         users = User.all
         render json: users
-    end
-    def show
-        user = User.find_by(id: params[:id])
-        render json: user
     end
 
     def create
@@ -19,6 +16,18 @@ class UsersController < ApplicationController
     def show
         render json: @current_user, status: :accepted 
     end
+
+    def update
+        user = User.find(params[:id])
+
+        user.update!(user_params)
+        render json: user, status: :accepted
+        # if @user.update(user_params)
+        # render json: @user
+        # else
+        # render json: @user.errors, status: :unprocessable_entity
+        # end
+    end
       
 
     # def destroy
@@ -27,8 +36,13 @@ class UsersController < ApplicationController
     # end
 
     private
-
+    # Only allow a list of trusted parameters through.
     def user_params
         params.permit(:username, :password, :profile_picture, :bio)
     end 
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_post
+      @user = User.find(params[:id])
+    end
 end

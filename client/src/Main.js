@@ -1,13 +1,17 @@
 import PostContainer from './PostContainer'
 import Profile from './Profile'
+import NavBar from './NavBar'
+// import { Switch, Route } from "react-router-dom";
 
 
-function Main() {
+function Main({ user, setProfilePage }) {
+
     return (
       <div style={{textAlign:"center"}}>
-        <h1>hello from main!</h1>
+        <h1>Posts 🤓</h1>
+        <NavBar user={user} />
         <PostContainer/>
-        <Profile/>
+        <Profile />
       </div>
     );
   }
