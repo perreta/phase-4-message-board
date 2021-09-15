@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import './Hidden.css'
+import { Button,Form} from "semantic-ui-react";
+
 
 function Post ({ id, content, username, avatar, date, updatedDate, postArray, setPostArray }) {   
     const [isClicked, setIsClicked] = useState(false)
@@ -57,16 +59,16 @@ function Post ({ id, content, username, avatar, date, updatedDate, postArray, se
                 {updatedDate === date ? <h3>{date}</h3> : <h3>Updated: {updatedDate}</h3>}
                 {!isClicked ? 
                 <p>{content}</p> : 
-                <form id="post-update" onSubmit={handleEdit}>
+                <Form id="post-update" onSubmit={handleEdit}>
                     <label className="label1">
                         Update Post: 
                         <br/>
                         <input onChange={handleInputChange} type="text" name="input"/>
                     </label>        
                     <input className="submit-button" type="submit" value="Update" />
-                </form>}
-                <button onClick={handleEditClick} className={!isClicked ? "edit" : "hidden"}>Edit</button>
-                <button onClick={handleRemove} className="remove">Delete</button>
+                </Form> }
+                <Button onClick={handleEditClick} className={!isClicked ? "edit" : "hidden"}>Edit</Button>
+                <Button onClick={handleRemove} className="remove">Delete</Button>
             </div>
             <br/>
         </>
