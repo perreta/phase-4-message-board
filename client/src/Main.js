@@ -4,14 +4,13 @@ import NavBar from './NavBar'
 // import { Switch, Route } from "react-router-dom";
 
 
-function Main({ user, setProfilePage }) {
 
+function Main({ user , setUser}) {
     return (
-      <div style={{textAlign:"center"}}>
-        <h1>Posts 🤓</h1>
-        <NavBar user={user} />
-        <PostContainer/>
-        <Profile />
+      <div style={{textAlign:"center", paddingRight:"200px",  paddingLeft:"200px", paddingBottom:"200px" }}>
+        <h1>{user.username}'s Messaging Board </h1>
+        <PostContainer user={user}/>
+        <Profile user={user} setUser={setUser}/>
       </div>
     );
   }

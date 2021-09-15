@@ -1,10 +1,6 @@
-import TitleHeader from './TitleHeader'
-import Main from './Main'
-import Login from './Login'
-import Signup from './Signup';
-import Profile from './Profile'
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import TitleHeader from "./TitleHeader";
+import Homepage from "./Homepage";
 
 // COMMANDS THAT WE NEED TO RUN
 // npm install --prefix client 
@@ -14,9 +10,14 @@ import { Switch, Route } from "react-router-dom";
 
 
 function App() {
-
   const [user, setUser] = useState(null);
   const [toggle, setToggle] = useState(false);
+
+  // COMMANDS THAT WE NEED TO RUN
+  // npm install --prefix client
+  // npm install semantic-ui-react semantic-ui-css
+  // npm start --prefix client
+  // npm install react-router-dom
 
   useEffect(() => {
     // auto-login
@@ -27,20 +28,10 @@ function App() {
     });
   }, []);
 
-  if (!user) return (
-  <div >
-    <TitleHeader/>
-    <Login onLogin={setUser} />
-    <Signup onLogin={setUser} />
-  </div>
-  );
-
-  
-  // console.log(user);
   return (
     <>
-      <TitleHeader setToggle={setToggle} toggle={toggle} />
-      {toggle ? <Profile user={user} setUser={setUser} /> : <Main user={user} /> }
+      <TitleHeader user={user} setToggle={setToggle}/>
+      <Homepage user={user} setUser={setUser} toggle={toggle} />
     </>
   );
 }

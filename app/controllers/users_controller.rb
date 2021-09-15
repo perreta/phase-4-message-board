@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
     skip_before_action :authorize, only: :index
-    # before_action :set_post, only: [:update]
 
     def index
         users = User.all
         render json: users
+    end
+    
+    def show
+        render json: @current_user, status: :accepted
     end
 
     def create
