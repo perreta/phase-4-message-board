@@ -8,13 +8,8 @@ class PostsController < ApplicationController
 
   # GET all users' posts
   def index
-<<<<<<< HEAD
     posts = Post.all.sort_by(&:created_at).reverse 
     render json: posts, include: :user, status: :ok
-=======
-    posts = Post.all
-    render json: posts,  status: :ok
->>>>>>> 549181924e30178856abe4add8147bb5e0a951c5
   end
 
   # GET /posts/1
