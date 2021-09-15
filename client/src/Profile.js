@@ -1,6 +1,6 @@
 import ProfileUpdate from "./ProfileUpdate";
 import defaultProfile from "./photos/icons8-name-64.png";
-import { Header, Message, Card, Image, Container } from "semantic-ui-react";
+import { Header,Image, Container } from "semantic-ui-react";
 
 function Profile({ user, setUser }) {
   // console.log(user);

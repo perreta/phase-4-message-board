@@ -15,6 +15,7 @@ function PostContainer({ user }) {
       <>
         {user ? (
           <Post
+            post={post}
             user={user}
             key={post.id}
             id={post.id}

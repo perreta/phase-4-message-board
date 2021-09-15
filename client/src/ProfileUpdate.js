@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Form, Input, Button, TextArea, Header} from "semantic-ui-react";
 
+
 function ProfileUpdate({ user, setUser }) {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState(user.username);

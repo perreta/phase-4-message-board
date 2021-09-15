@@ -1,8 +1,7 @@
 import { useState } from "react";
-import "./Hidden.css";
+import defaultProfile from "./photos/icons8-name-64.png";
 import {
   Form,
-  Input,
   Button,
   TextArea,
   Header,
@@ -21,7 +20,7 @@ function Post({
   setPostArray
 }) {
   const [isClicked, setIsClicked] = useState(false);
-  const [updatedText, setUpdatedText] = useState("");
+  const [updatedText, setUpdatedText] = useState();
 
   function handleRemove() {
     fetch(`/posts/${id}`, {
@@ -78,7 +77,7 @@ function Post({
         }}
       >
         <Image
-          src={avatar}
+          src={avatar ? avatar : defaultProfile}
           alt="user avatar"
           style={{ maxWidth: 250,   marginLeft:"auto",
             marginRight:"auto" }}
