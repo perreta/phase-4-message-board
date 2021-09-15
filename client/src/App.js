@@ -4,7 +4,7 @@ import Login from './Login'
 import Homepage from './Homepage'
 import Signup from './Signup';
 import NavBar from './NavBar';
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; 
 // import { Switch, Route } from "react-router-dom";
 
 // COMMANDS THAT WE NEED TO RUN
@@ -40,7 +40,7 @@ function App() {
       <TitleHeader/>
       <Homepage/>
       <NavBar user={user}/>
-      <Main/>
+      <Main user={user}/>
     </>
   );
 }

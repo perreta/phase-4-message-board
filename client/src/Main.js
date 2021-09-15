@@ -2,11 +2,11 @@ import PostContainer from './PostContainer'
 import Profile from './Profile'
 
 
-function Main() {
+function Main({ user }) {
     return (
       <div style={{textAlign:"center"}}>
         <h1>hello from main!</h1>
-        <PostContainer/>
+        <PostContainer user={user}/>
         <Profile/>
       </div>
     );
