@@ -9,8 +9,6 @@ function PostForm({ setPostArray, user }){
         const newPost = { 
             text: text,
             user_id: user.id,
-
-
         }
         fetch('/posts', {
             method: 'POST', headers: {
@@ -19,11 +17,9 @@ function PostForm({ setPostArray, user }){
         })
         .then(resp => resp.json())
         .then(data => {
-            console.log(data)
             setPostArray(prevPosts => [data, ...prevPosts]) 
         })
         event.target.reset()
-        
     }
 
     function handleInputChange(event){
