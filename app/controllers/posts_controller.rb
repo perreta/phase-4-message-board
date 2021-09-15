@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy]
-  before_action :potato, only: [:destroy]
+  # before_action :potato, only: [:destroy]
   skip_before_action :authorize, only: :index
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
@@ -34,16 +34,15 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   def destroy
     # byebug
-    puts "hi"
       post = @current_user.posts.find(params[:id])
       post.destroy
       head :no_content
   end
 
   private
-    def potato 
-      #check if the post belongs to the user, if nil, send not authorized (json with error message), if yes do nothing! @current_user.posts.ids.include?(params[:id])
-    end
+    # def potato 
+    #   #check if the post belongs to the user, if nil, send not authorized (json with error message), if yes do nothing! @current_user.posts.ids.include?(params[:id])
+    # end
 
     def find_post
       post = @current_user.posts.find(params[:id])

@@ -35,6 +35,7 @@ function PostForm({ setPostArray, user }) {
           name="input"
           autoComplete="off"
           type="text"
+          placeHolder="Start Writing..."
           control={TextArea}
           onChange={handleInputChange}
         />
