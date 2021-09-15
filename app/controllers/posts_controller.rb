@@ -3,8 +3,6 @@ class PostsController < ApplicationController
   # before_action :potato, only: [:destroy]
   skip_before_action :authorize, only: :index
 
-  # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
   # GET all users' posts
   def index
@@ -53,11 +51,4 @@ class PostsController < ApplicationController
       params.permit(:text)
     end
 
-    # def render_not_found_response(exception) 
-    #   render json: { errors: "#{exception.model} not found or User not Authorized" }, status: :not_found 
-    # end
-
-    # def render_unprocessable_entity_response(invalid)
-    #   render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    # end
 end
