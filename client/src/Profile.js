@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
 import ProfileUpdate from "./ProfileUpdate";
-import { Route } from "react-router-dom";
+
+
 
 function Profile({user, setUser}) {
   // console.log(user);
@@ -16,9 +16,11 @@ function Profile({user, setUser}) {
       <li>{user.posts.map(post => post.text)}</li>
       <br />
       <h3>Edit Profile</h3>
-      <Route exact path="/profile-edit">
+  
         <ProfileUpdate user={user} setUser={setUser}/>
-      </Route>
+
+
+
       </>)
     : null} </> 
   );

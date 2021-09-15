@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { Form, Input, Button, Header } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 function Login({onLogin}) {
+  const history = useHistory();
   const [errors, setErrors] = useState([]);
   const [user, setUser] = useState({
     username: "",
@@ -28,11 +30,11 @@ function Login({onLogin}) {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
         if (data.errors) {
           setErrors(data.errors);
         } else {
           onLogin(data);
+          history.push("/");
         }
       });
   };
