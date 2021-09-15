@@ -1,7 +1,6 @@
+import React, { useEffect, useState } from "react";
 import TitleHeader from "./TitleHeader";
 import Homepage from "./Homepage";
-import React, { useEffect, useState } from "react"; 
-// import { Switch, Route } from "react-router-dom";
 
 // COMMANDS THAT WE NEED TO RUN
 // npm install --prefix client 
@@ -12,6 +11,7 @@ import React, { useEffect, useState } from "react";
 
 function App() {
   const [user, setUser] = useState(null);
+  const [toggle, setToggle] = useState(false);
 
   // COMMANDS THAT WE NEED TO RUN
   // npm install --prefix client
@@ -30,8 +30,8 @@ function App() {
 
   return (
     <>
-      <TitleHeader user={user} />
-      <Homepage user={user} setUser={setUser} />
+      <TitleHeader user={user} setToggle={setToggle}/>
+      <Homepage user={user} setUser={setUser} toggle={toggle} />
     </>
   );
 }

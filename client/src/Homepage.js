@@ -7,7 +7,7 @@ import { Switch, Route } from "react-router-dom";
 
 
 
-function Homepage({user, setUser}) {
+function Homepage({user, setUser, toggle}) {
   if (!user)
     return (
       <div>
@@ -26,7 +26,7 @@ function Homepage({user, setUser}) {
   return (
     <>
       <NavBar user={user} setUser={setUser} />
-      <Main user={user}/>
+      <Main user={user} setUser={setUser} toggle={toggle} />
     </>
   );
 }

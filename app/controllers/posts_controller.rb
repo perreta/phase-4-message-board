@@ -1,16 +1,20 @@
 class PostsController < ApplicationController
   before_action :find_post, only: [:show, :update, :destroy]
+  # before_action :potato, only: [:destroy]
   skip_before_action :authorize, only: :index
 
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
-  rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+  # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+  # rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
-
-
-  # GET /posts
+  # GET all users' posts
   def index
+<<<<<<< HEAD
     posts = Post.all.sort_by(&:created_at).reverse 
     render json: posts, include: :user, status: :ok
+=======
+    posts = Post.all
+    render json: posts,  status: :ok
+>>>>>>> 549181924e30178856abe4add8147bb5e0a951c5
   end
 
   # GET /posts/1
@@ -21,7 +25,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
-    post = Post.create!(post_params)
+    post = @current_user.posts.create!(post_params)
     render json: post, status: :created
   end
 
@@ -34,27 +38,31 @@ class PostsController < ApplicationController
 
   # DELETE /posts/1
   def destroy
-    post = find_post
-    post.destroy
-    head :no_content
+    # byebug
+      post = @current_user.posts.find(params[:id])
+      post.destroy
+      head :no_content
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+    # def potato 
+    #   #check if the post belongs to the user, if nil, send not authorized (json with error message), if yes do nothing! @current_user.posts.ids.include?(params[:id])
+    # end
+
     def find_post
-      post = Post.find(params[:id])
+      post = @current_user.posts.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:text, :user_id)
+      params.permit(:text)
     end
 
-    def render_not_found_response(exception) 
-      render json: { error: "#{exception.model} not found" }, status: :not_found 
-    end
+    # def render_not_found_response(exception) 
+    #   render json: { errors: "#{exception.model} not found or User not Authorized" }, status: :not_found 
+    # end
 
-    def render_unprocessable_entity_response(invalid)
-      render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
-    end
+    # def render_unprocessable_entity_response(invalid)
+    #   render json: { errors: invalid.record.errors.full_messages }, status: :unprocessable_entity
+    # end
 end

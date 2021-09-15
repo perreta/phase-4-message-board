@@ -1,5 +1,6 @@
 class PostSerializer < ActiveModel::Serializer
   attributes :id, :text, :created_at, :updated_at, :date, :updated_date
+  
   belongs_to :user
 
   def date
