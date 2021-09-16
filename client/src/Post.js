@@ -16,6 +16,8 @@ function Post({
   avatar,
   date,
   updatedDate,
+  createdAt,
+  updatedAt,
   postArray,
   setPostArray
 }) {
@@ -83,7 +85,7 @@ function Post({
             marginRight:"auto" }}
         />
         <Header as="h3" style={{fontWeight:"lighter"}}>Username: {username}</Header>
-        {updatedDate === date ? (
+        {updatedAt === createdAt ? (
           <Header style={{fontWeight:"lighter", fontSize: "12px" }}>Posted: {date}</Header>
         ) : (
           <Header style={{fontWeight:"lighter", fontSize: "12px" }}>Updated: {updatedDate}</Header>

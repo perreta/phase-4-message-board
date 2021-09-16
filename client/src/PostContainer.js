@@ -24,6 +24,8 @@ function PostContainer({ user }) {
             avatar={post.user.profile_picture}
             date={post.date}
             updatedDate={post.updated_date}
+            createdAt={post.created_at}
+            updatedAt={post.updated_at}
             postArray={postArray}
             setPostArray={setPostArray}
           />
