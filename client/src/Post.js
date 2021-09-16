@@ -20,7 +20,7 @@ function Post({
   setPostArray
 }) {
   const [isClicked, setIsClicked] = useState(false);
-  const [updatedText, setUpdatedText] = useState();
+  const [updatedText, setUpdatedText] = useState(content);
 
   function handleRemove() {
     fetch(`/posts/${id}`, {
@@ -77,7 +77,7 @@ function Post({
         }}
       >
         <Image
-          src={avatar ? avatar : defaultProfile}
+          src={avatar} 
           alt="user avatar"
           style={{ maxWidth: 250,   marginLeft:"auto",
             marginRight:"auto" }}

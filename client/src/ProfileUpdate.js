@@ -22,7 +22,7 @@ function ProfileUpdate({ user, setUser }) {
       body: JSON.stringify({
         username: username,
         password: password,
-        profilePicture: profilePicture,
+        profile_picture: profilePicture,
         bio: bio,
       }),
     })
@@ -31,6 +31,7 @@ function ProfileUpdate({ user, setUser }) {
         if (user.errors) {
           setErrors(user.errors);
         } else {
+          console.log(user);
           setUser(user);
           history.push("/profile-edit");
         }

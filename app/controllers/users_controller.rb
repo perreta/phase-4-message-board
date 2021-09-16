@@ -10,8 +10,15 @@ class UsersController < ApplicationController
         render json: @current_user, status: :accepted
     end
 
-    def create
-        user = User.create!(user_params)
+    def create #signup
+        # chanign the parameters to a hash, so I can change them
+        # Remove :profile_picture if it's empty
+        parameters = user_params.to_h
+        if parameters[:profile_picture].blank? then 
+            parameters.delete(:profile_picture)
+        end
+
+        user = User.create!(parameters)
         session[:user_id] = user.id
         render json: user, status: :created 
     end 
@@ -21,15 +28,16 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find(params[:id])
+        #chanign the parameters to a hash, so I can change them
+        #if profile picture is blank, then I replace with the default value by using the User.column_defaults["profile_picture"]
+        parameters = user_params.to_h
+        if parameters[:profile_picture].blank? then 
+            parameters[:profile_picture] = User.column_defaults["profile_picture"]
+        end
 
-        user.update!(user_params)
-        render json: user, status: :accepted
-        # if @user.update(user_params)
-        # render json: @user
-        # else
-        # render json: @user.errors, status: :unprocessable_entity
-        # end
+        @current_user.update!(parameters)
+        render json: @current_user, status: :accepted
+   
     end
       
 

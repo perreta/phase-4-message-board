@@ -22,7 +22,7 @@ function TitleHeader({ user }) {
 
         {user ? (
           <Image
-            src={user.profile_picture? user.profile_picture :defaultProfile }
+            src={user.profile_picture}
             style={{
               float: "right",
               height: "50px",

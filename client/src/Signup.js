@@ -7,6 +7,7 @@ function Signup({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const history = useHistory();
 
+
   const [userInput, setUserInput] = useState({
     username: "",
     password: "",
@@ -37,7 +38,7 @@ function Signup({ onLogin }) {
       .then((r) => {
         if (r.ok) {
           r.json().then((user) => onLogin(user));
-          history.push("/");
+            history.push("/");
         } else {
           r.json().then((err) => setErrors(err.errors));
         }

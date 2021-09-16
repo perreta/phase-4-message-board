@@ -12,8 +12,8 @@ function Profile({ user, setUser }) {
 
           <Container text style={{ display: "flex", justifyContent: "center"}}>
             <Image
-              src={user.profile_picture ? user.profile_picture : defaultProfile}
-              height="200px"
+            src={user.profile_picture}
+            height="200px"
               alt="user profile picture"
             />
             <p style={{textAlign: "left", marginTop:"20px"}}>
