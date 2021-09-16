@@ -17,10 +17,16 @@ User.create(username: "yoda", bio: Faker::Quote.yoda, profile_picture:"https://i
 
 Post.create(text: 'Learning to build a modern web application is daunting. Ruby on Rails makes it much easier and more fun. It includes everything you need to build fantastic applications, and you can learn it with the support of our large, friendly community.', user_id: User.all.sample.id)
 Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
 
 # (user_id:User.all.sample.id)
 
-20.times do
+10.times do
     Post.create(text: Faker::Lorem.paragraph, user_id:User.all.sample.id)
 end
 
