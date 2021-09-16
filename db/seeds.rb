@@ -8,22 +8,20 @@
 require 'faker'
 puts "Seeding"
 
-u1 = User.create(username: 'Vic', bio: 'Ruby on Rails is open source software', profile_picture: "https://i.imgur.com/gvVN7Kq.jpeg", password: "1234567")
-u2 = User.create(username: 'Viv', bio: 'Ruby on Rails is close source software', profile_picture: "https://i.imgur.com/tHn7Bg2.jpeg", password: "1234567")
-puts "hi"
-3.times do
-    User.create(username: Faker::Name.first_name, bio: Faker::Lorem.sentence, profile_picture: Faker::Avatar.image, password: "1234567")
+
+User.create(username: 'Vic', bio: 'Ruby on Rails is open source software', profile_picture: "https://i.imgur.com/gvVN7Kq.jpeg", password: "1234567")
+User.create(username: 'Viv', bio: 'Ruby on Rails is close source software', profile_picture: "https://i.imgur.com/tHn7Bg2.jpeg", password: "1234567"),
+User.create(username: "jack", bio: Faker::Quote.famous_last_words, profile_picture:Faker::Avatar.image, password:"1234567" )
+User.create(username: "jill", bio: Faker::Quote.famous_last_words, profile_picture:Faker::Avatar.image, password:"1234567" )
+User.create(username: "yoda", bio: Faker::Quote.yoda, profile_picture:"https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2019/12/20/Pictures/_0745b0ec-231b-11ea-8c10-7db3e225203f.jpg", password:"1234567" )
+
+Post.create(text: 'Learning to build a modern web application is daunting. Ruby on Rails makes it much easier and more fun. It includes everything you need to build fantastic applications, and you can learn it with the support of our large, friendly community.', user_id: User.all.sample.id
+Post.create(text: Faker::Quotes::Shakespeare.hamlet_quote, user_id: User.all.sample.id)
+
+# (user_id:User.all.sample.id)
+
+20.times do
+    Post.create(text: Faker::Lorem.paragraph, user_id:userID.sample)
 end
-
-Post.create(text: 'Learning to build a modern web application is daunting. Ruby on Rails makes it much easier and more fun. It includes everything you need to build fantastic applications, and you can learn it with the support of our large, friendly community.', user_id: u1.id)
-Post.create(text: 'You’ve probably already used many of the applications that were built with Ruby on Rails: Basecamp, HEY, GitHub, Shopify, Airbnb, Twitch, SoundCloud, Hulu, Zendesk, Square, Cookpad.', user_id: u2.id)
-
-Post.create(text: Faker::Lorem.paragraph, user_id:3)
-Post.create(text: Faker::Lorem.paragraph, user_id:5)
-Post.create(text: Faker::Lorem.paragraph, user_id:4)
-Post.create(text: Faker::Lorem.paragraph, user_id:2)
-Post.create(text: Faker::Lorem.paragraph, user_id:1)
-Post.create(text: Faker::Lorem.paragraph, user_id:3)
-Post.create(text: Faker::Lorem.paragraph, user_id:5)
 
 puts "Done Seeding"
