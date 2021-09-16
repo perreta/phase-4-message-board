@@ -2,11 +2,6 @@ import React, { useEffect, useState } from "react";
 import TitleHeader from "./TitleHeader";
 import Homepage from "./Homepage";
 
-// COMMANDS THAT WE NEED TO RUN
-// npm install --prefix client 
-// npm install semantic-ui-react semantic-ui-css
-// npm start --prefix client
-
 
 
 function App() {
@@ -18,6 +13,9 @@ function App() {
   // npm install semantic-ui-react semantic-ui-css
   // npm start --prefix client
   // npm install react-router-dom
+  // rails db:migrate
+  // deploying!
+  //brew tap heroku/brew && brew install heroku
 
   useEffect(() => {
     // auto-login
